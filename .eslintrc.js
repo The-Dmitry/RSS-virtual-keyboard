@@ -11,10 +11,10 @@ module.exports = {
     sourceType: 'module'
   },
   rules: {
-    // 'import/extensions': 'off'
-    'linebreak-style': [
-      'error',
-      'windows'
-    ]
+    'import/extensions': 'off'
+    // 'linebreak-style': [
+    //   'error',
+    //   'windows'
+    // ],
   }
 };
