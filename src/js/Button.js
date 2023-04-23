@@ -1,11 +1,10 @@
 export class Button {
   constructor({
     isSymbol, code, key, shift
-  }, language) {
+  }) {
     this.isSymbol = isSymbol;
     this.nodeValue = null;
     this.node = null;
-    this.language = language;
     this.code = code;
     this.ru = key.ru;
     this.eng = key.eng;
@@ -16,9 +15,9 @@ export class Button {
   buildNode() {
     const node = document.createElement('button');
     node.className = `button ${this.code.toLowerCase()}`;
-    this.nodeValue = this.setLanguage();
-    node.textContent = this.nodeValue;
     this.node = node;
+    node.setAttribute('data-code', this.code);
+    this.updateButton();
     return this.node;
   }
 
@@ -27,22 +26,28 @@ export class Button {
   }
 
   updateButton(lang, isShift) {
-    this.language = lang;
-    if (!this.language) {
+    if (!lang) {
       if (isShift) {
         this.nodeValue = this.shiftEng ? this.shiftEng : this.eng.toUpperCase();
       } else {
         this.nodeValue = this.eng;
       }
     }
-    if (this.language) {
+    if (lang) {
       if (isShift) {
         this.nodeValue = this.shiftRu ? this.shiftRu : this.ru.toUpperCase();
       } else {
         this.nodeValue = this.ru;
       }
-      // this.nodeValue = isShift ? this.shiftRu : this.ru.toLowerCase();
     }
-    this.node.textContent = this.nodeValue;
+    this.node.innerHTML = this.nodeValue;
+  }
+
+  setActiveState() {
+    this.node.classList.add('clicked');
+  }
+
+  setInActiveState() {
+    this.node.classList.remove('clicked');
   }
 }

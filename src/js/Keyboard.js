@@ -8,6 +8,7 @@ export class Keyboard {
     this.buttons = buttons;
     this.parentNode = parentNode;
     this.isShift = false;
+    this.isCaps = false;
   }
 
   buildButtonList() {
@@ -33,7 +34,13 @@ export class Keyboard {
   }
 
   getButtonValue(code) {
-    let result = this.buttonsList.get(code);
-    return result.isSymbol ? result.nodeValue : null;
+    let button = this.buttonsList.get(code);
+    button.setActiveState();
+    return button.isSymbol ? button.nodeValue : null;
+  }
+
+  removeActiveState(code) {
+    let button = this.buttonsList.get(code);
+    button.setInActiveState();
   }
 }

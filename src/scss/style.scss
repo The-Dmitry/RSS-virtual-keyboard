@@ -1,10 +1,30 @@
+@import './normalize';
+
+.wrapper {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 25px;
+}
+
+.keyboard,
+.text-area {
+  width: 100%;
+}
+
 .keyboard {
   display: grid;
   grid-template-columns: repeat(15, 6.66%);
   grid-template-rows: repeat(5, 1fr);
-  max-width: 1200px;
+  user-select: none;
+}
+
+.text-area {
+  min-height: 250px;
+  max-width: 1150px;
   width: 100%;
-  margin: 0 auto;
+  padding: 20px;
+  resize: none;
 }
 
 .button {
@@ -23,6 +43,10 @@
   &:nth-child(n+56):nth-child(-n+100) {
     grid-row: 5 / 6;
   }
+}
+
+.clicked {
+  background-color: rgb(136, 136, 255);
 }
 
 // .Backspace {
