@@ -43,6 +43,9 @@
   &:nth-child(n+56):nth-child(-n+100) {
     grid-row: 5 / 6;
   }
+  &:active {
+    background-color: rgb(136, 136, 255);
+  }
 }
 
 .clicked {

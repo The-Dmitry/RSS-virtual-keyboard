@@ -7,8 +7,13 @@ export class Keyboard {
     this.language = language;
     this.buttons = buttons;
     this.parentNode = parentNode;
-    this.isShift = false;
+    this.isUppercase = false;
     this.isCaps = false;
+    this.isShift = false;
+    this.isCtrl = false;
+    this.isAlt = false;
+    this.isCaps = false;
+    this.shortcut = new Map();
   }
 
   buildButtonList() {
@@ -24,13 +29,53 @@ export class Keyboard {
     this.updateButtons();
   }
 
-  setShiftState() {
+  setUppercaseState() {
+    this.isUppercase = true;
+    this.updateButtons();
+  }
+
+  removeUppercaseState() {
+    this.isUppercase = false;
+    this.updateButtons();
+  }
+
+  setMouseShiftState(node) {
     this.isShift = !this.isShift;
+    node.classList.toggle('clicked');
+    if (this.isUppercase) {
+      this.removeUppercaseState();
+    } else {
+      this.setUppercaseState();
+    }
+  }
+
+  setKeyboardShiftState(node) {
+    this.isShift = true;
+    node.classList.add('clicked');
+    this.isUppercase = true;
+    this.updateButtons();
+  }
+
+  removeKeyboardShiftState(node) {
+    this.isShift = false;
+    node.classList.remove('clicked');
+    if (this.isCaps) {
+      this.isUppercase = true;
+    } else {
+      this.isUppercase = !this.isUppercase;
+    }
+    this.updateButtons();
+  }
+
+  setCaps(code) {
+    this.isCaps = !this.isCaps;
+    this.getButton(code).node.classList.toggle('clicked');
+    this.isUppercase = !this.isUppercase;
     this.updateButtons();
   }
 
   updateButtons() {
-    this.buttonsList.forEach((value) => value.updateButton(this.language, this.isShift));
+    this.buttonsList.forEach((value) => value.updateButton(this.language, this.isUppercase));
   }
 
   getButtonValue(code) {
@@ -39,8 +84,41 @@ export class Keyboard {
     return button.isSymbol ? button.nodeValue : null;
   }
 
-  removeActiveState(code) {
-    let button = this.buttonsList.get(code);
-    button.setInActiveState();
+  getButton(code) {
+    return this.buttonsList.get(code);
+  }
+
+  addMouseShortcut(name, code) {
+    if (this.shortcut.has(name)) {
+      const temp = this.shortcut.get(name);
+      temp.setInActiveState();
+      this.shortcut.delete(name);
+      return;
+    }
+    const button = this.getButton(code);
+    this.shortcut.set(name, button);
+    button.setActiveState();
+    if (this.shortcut.has('alt') && this.shortcut.has('ctrl')) {
+      this.changeLanguage();
+      this.clearShortcut();
+    }
+  }
+
+  addKeyboardShortcut(name, code) {
+    if (this.shortcut.has(name)) {
+      return;
+    }
+    const button = this.getButton(code);
+    this.shortcut.set(name, button);
+    button.setActiveState();
+    if (this.shortcut.has('alt') && this.shortcut.has('ctrl')) {
+      this.changeLanguage();
+      this.clearShortcut();
+    }
+  }
+
+  clearShortcut() {
+    this.shortcut.forEach(el => el.setInActiveState());
+    this.shortcut.clear();
   }
 }
