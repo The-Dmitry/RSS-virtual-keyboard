@@ -1,7 +1,7 @@
 export class Button {
   constructor({
     isSymbol, code, key, shift
-  }) {
+  }, language) {
     this.isSymbol = isSymbol;
     this.nodeValue = null;
     this.node = null;
@@ -10,6 +10,7 @@ export class Button {
     this.eng = key.eng;
     this.shiftRu = shift.ru;
     this.shiftEng = shift.eng;
+    this.lang = language;
   }
 
   buildNode() {
@@ -17,7 +18,7 @@ export class Button {
     node.className = `button ${this.code.toLowerCase()}`;
     this.node = node;
     node.setAttribute('data-code', this.code);
-    this.updateButton();
+    this.updateButton(this.lang, false);
     return this.node;
   }
 

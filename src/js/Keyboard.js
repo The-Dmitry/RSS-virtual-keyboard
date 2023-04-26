@@ -12,7 +12,6 @@ export class Keyboard {
     this.isShift = false;
     this.isCtrl = false;
     this.isAlt = false;
-    this.isCaps = false;
     this.shortcut = new Map();
   }
 
@@ -26,33 +25,29 @@ export class Keyboard {
 
   changeLanguage() {
     this.language = !this.language;
+    localStorage.setItem('language', this.language);
     this.updateButtons();
   }
 
-  setUppercaseState() {
-    this.isUppercase = true;
-    this.updateButtons();
-  }
-
-  removeUppercaseState() {
-    this.isUppercase = false;
+  switchUppercaseState() {
+    this.isUppercase = !this.isUppercase;
     this.updateButtons();
   }
 
   setMouseShiftState(node) {
     this.isShift = !this.isShift;
     node.classList.toggle('clicked');
-    if (this.isUppercase) {
-      this.removeUppercaseState();
-    } else {
-      this.setUppercaseState();
-    }
+    this.switchUppercaseState();
   }
 
   setKeyboardShiftState(node) {
     this.isShift = true;
     node.classList.add('clicked');
-    this.isUppercase = true;
+    if (this.isCaps) {
+      this.isUppercase = false;
+    } else {
+      this.isUppercase = true;
+    }
     this.updateButtons();
   }
 
@@ -62,7 +57,7 @@ export class Keyboard {
     if (this.isCaps) {
       this.isUppercase = true;
     } else {
-      this.isUppercase = !this.isUppercase;
+      this.isUppercase = false;
     }
     this.updateButtons();
   }

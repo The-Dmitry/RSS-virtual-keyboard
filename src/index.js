@@ -14,7 +14,9 @@ textArea.className = 'text-area';
 wrapper.append(textArea, parent);
 document.body.append(wrapper);
 
-const keyboard = new Keyboard(false, buttonsData, parent);
+const lang = JSON.parse(localStorage.getItem('language'));
+
+const keyboard = new Keyboard(lang, buttonsData, parent);
 keyboard.buildButtonList();
 
 function buttonAction(code, isClick) {
@@ -69,6 +71,9 @@ parent.addEventListener('mousedown', (e)=> {
 document.addEventListener('keydown', (e)=> {
   const code = e.code;
   console.log(code);
+  if (code === 'F12') {
+    return;
+  }
   if (code === 'ShiftLeft' || code === 'ShiftRight') {
     keyboard.setKeyboardShiftState(keyboard.getButton(code).node);
     return;
