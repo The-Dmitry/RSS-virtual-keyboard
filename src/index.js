@@ -29,7 +29,7 @@ function insertChar(char) {
 }
 
 function buttonAction(code, isClick) {
-  if (code) {
+  if (code && code !== 'F12') {
     if (isClick) {
       const char = keyboard.getButtonValue(code);
       if (char) {
