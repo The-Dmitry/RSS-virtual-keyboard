@@ -1,57 +1,121 @@
 @import './normalize';
 
+html,
+body,
 .wrapper {
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 25px;
+  height: 100%;
 }
 
-.keyboard,
-.text-area {
+body {
+  background-color: #e3e3e3;
+}
+
+.wrapper {
+  max-width: 1100px;
   width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  font-size: 20px;
+  justify-content: space-evenly;
+
+  @media (max-width: 930px) {
+    & {
+      font-size: 16px;
+    }
+  }
+  @media (max-width: 700px) {
+    & {
+      font-size: 14px;
+    }
+  }
 }
 
 .keyboard {
-  display: grid;
-  grid-template-columns: repeat(15, 6.66%);
-  grid-template-rows: repeat(5, 1fr);
+  padding: 3px;
+  border: 1px solid black;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 5px 7px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 0px 0px 5px 7px rgba(34, 60, 80, 0.2);
+  box-shadow: 0px 0px 5px 7px rgba(34, 60, 80, 0.2);
+}
+.text-area {
+}
+
+.keyboard {
   user-select: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  row-gap: 5px;
+  column-gap: 2px;
 }
 
 .text-area {
   min-height: 250px;
-  max-width: 1150px;
-  width: 100%;
   padding: 20px;
   resize: none;
 }
 
 .button {
-  &:nth-child(1):nth-child(-n+14) {
-    grid-row: 1 / 2;
-  }
-  &:nth-child(n+15):nth-child(-n+29) {
-    grid-row: 2 / 3;
-  }
-  &:nth-child(n+30):nth-child(-n+43) {
-    grid-row: 3 / 4;
-  }
-  &:nth-child(n+43):nth-child(-n+56) {
-    grid-row: 4 / 5;
-  }
-  &:nth-child(n+56):nth-child(-n+100) {
-    grid-row: 5 / 6;
-  }
-  &:active {
-    background-color: rgb(136, 136, 255);
+  height: 60px;
+  width: 6.2%;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  background-color: rgb(71, 71, 71);
+  color: #fff;
+  overflow: hidden;
+  box-shadow: 0 3px #999;
+  @media (max-width: 930px) {
+    height: 50px;
   }
 }
 
+.backspace {
+  width: 13.5%;
+  @media (max-width: 700px) {
+    position: relative;
+    font-size: 0;
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url(../icons/backspace.svg) center no-repeat;
+    }
+  }
+}
+
+.enter {
+  width: 15%;
+}
+
+.tab {
+  width: 7.5%;
+}
+
+.capslock {
+  width: 11%;
+}
+
+.shiftleft,
+.shiftright {
+  width: 12.5%;
+}
+
+.space {
+  width: 46.9%;
+}
+
+button:active,
 .clicked {
-  background-color: rgb(136, 136, 255);
+  background-color: rgb(112, 112, 255);
+  transition: all linear .1s;
+  box-shadow: 0 2px #666;
+  transform: translateY(2px)
 }
 
-// .Backspace {
-//   grid;
-// }

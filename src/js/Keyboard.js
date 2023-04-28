@@ -21,6 +21,9 @@ export class Keyboard {
       this.buttonsList.set(element.code, node);
       this.parentNode.append(node.buildNode());
     });
+    const temp = document.createElement('div');
+    temp.className = 'button';
+    this.parentNode.append(temp);
   }
 
   changeLanguage() {

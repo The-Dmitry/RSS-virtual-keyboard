@@ -12,7 +12,11 @@ const textArea = document.createElement('textarea');
 textArea.className = 'text-area';
 textArea.setAttribute('autofocus', '');
 
-wrapper.append(textArea, parent);
+const message = document.createElement('p');
+message.className = 'message';
+message.textContent = 'Keyboard was made with OS Windows. To change the language, use the shortcut Ctrl + Alt / Alt + Ctrl';
+
+wrapper.append(textArea, message, parent);
 document.body.append(wrapper);
 
 const lang = JSON.parse(localStorage.getItem('language'));
@@ -25,21 +29,25 @@ function insertChar(char) {
 }
 
 function buttonAction(code, isClick) {
-  if (isClick) {
-    const char = keyboard.getButtonValue(code);
-    if (char) {
-      insertChar(char);
+  if (code) {
+    if (isClick) {
+      const char = keyboard.getButtonValue(code);
+      if (char) {
+        insertChar(char);
+      }
+    } else {
+      keyboard.getButton(code).setInActiveState();
     }
-  } else {
-    keyboard.getButton(code).setInActiveState();
   }
 }
 
 function deleteText(stepForward = 0, stepBack = 0) {
-  if (textArea.selectionStart !== textArea.selectionEnd) {
-    textArea.setRangeText('', textArea.selectionStart, textArea.selectionEnd, 'end');
-  } else {
-    textArea.setRangeText('', textArea.selectionStart - stepForward, textArea.selectionEnd + stepBack, 'end');
+  if (textArea.value.length > 0) {
+    if (textArea.selectionStart !== textArea.selectionEnd) {
+      textArea.setRangeText('', textArea.selectionStart, textArea.selectionEnd, 'end');
+    } else {
+      textArea.setRangeText('', textArea.selectionStart - stepForward, textArea.selectionEnd + stepBack, 'end');
+    }
   }
 }
 
@@ -112,7 +120,9 @@ function mouseClick(e) {
   }
   buttonAction(code, true);
   e.target.addEventListener('mouseup', ()=> {
-    buttonAction(code, false);
+    setTimeout(()=> {
+      buttonAction(code, false);
+    }, 100);
   });
   e.target.addEventListener('mouseleave', ()=> {
     buttonAction(code, false);
