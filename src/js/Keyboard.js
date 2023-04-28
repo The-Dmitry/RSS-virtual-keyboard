@@ -17,7 +17,7 @@ export class Keyboard {
 
   buildButtonList() {
     this.buttons.forEach(element => {
-      let node = new Button(element, this.language);
+      const node = new Button(element, this.language);
       this.buttonsList.set(element.code, node);
       this.parentNode.append(node.buildNode());
     });
@@ -74,7 +74,7 @@ export class Keyboard {
   }
 
   getButtonValue(code) {
-    let button = this.buttonsList.get(code);
+    const button = this.buttonsList.get(code);
     button.setActiveState();
     return button.isSymbol ? button.nodeValue : null;
   }

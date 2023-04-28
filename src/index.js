@@ -10,6 +10,7 @@ parent.className = 'keyboard';
 
 const textArea = document.createElement('textarea');
 textArea.className = 'text-area';
+textArea.setAttribute('autofocus', '');
 
 wrapper.append(textArea, parent);
 document.body.append(wrapper);
@@ -19,27 +20,77 @@ const lang = JSON.parse(localStorage.getItem('language'));
 const keyboard = new Keyboard(lang, buttonsData, parent);
 keyboard.buildButtonList();
 
+function insertChar(char) {
+  textArea.setRangeText(char, textArea.selectionStart, textArea.selectionEnd, 'end');
+}
+
 function buttonAction(code, isClick) {
   if (isClick) {
-    // if (code === 'ControlLeft') {
-    //   keyboard.changeLanguage();
-    // }
-    // if (code === 'ShiftLeft') {
-    //   keyboard.setShiftState();
-    // }
-    let char = keyboard.getButtonValue(code);
+    const char = keyboard.getButtonValue(code);
     if (char) {
-      textArea.value += char;
+      insertChar(char);
     }
   } else {
     keyboard.getButton(code).setInActiveState();
   }
-  textArea.focus();
 }
 
-parent.addEventListener('mousedown', (e)=> {
+function deleteText(stepForward = 0, stepBack = 0) {
+  if (textArea.selectionStart !== textArea.selectionEnd) {
+    textArea.setRangeText('', textArea.selectionStart, textArea.selectionEnd, 'end');
+  } else {
+    textArea.setRangeText('', textArea.selectionStart - stepForward, textArea.selectionEnd + stepBack, 'end');
+  }
+}
+
+function inputSimilarCases(code) {
+  if (code === 'CapsLock') {
+    keyboard.setCaps(code);
+    return;
+  }
+  if (code === 'ArrowLeft') {
+    const step = textArea.selectionStart - 1;
+    [textArea.selectionStart, textArea.selectionEnd] = [step, step];
+    return;
+  }
+  if (code === 'ArrowRight') {
+    const step = textArea.selectionStart + 1;
+    [textArea.selectionStart, textArea.selectionEnd] = [step, step];
+    return;
+  }
+  if (code === 'ArrowUp') {
+    const index = textArea.value.lastIndexOf('\n', textArea.selectionStart - 1);
+    if (index >= 0) {
+      [textArea.selectionStart, textArea.selectionEnd] = [index, index];
+    }
+    return;
+  }
+  if (code === 'ArrowDown') {
+    const index = textArea.value.indexOf('\n', textArea.selectionStart + 1);
+    if (index) {
+      [textArea.selectionStart, textArea.selectionEnd] = [index, index];
+    }
+    return;
+  }
+  if (code === 'Backspace') {
+    deleteText(1, 0);
+    return;
+  }
+  if (code === 'Delete') {
+    deleteText(0, 1);
+    return;
+  }
+  if (code === 'Enter') {
+    insertChar('\n');
+    return;
+  }
+  if (code === 'Tab') {
+    insertChar('\t');
+  }
+}
+
+function mouseClick(e) {
   const code = e.target.getAttribute('data-code');
-  // console.log(code);
   if (code === 'ShiftLeft' || code === 'ShiftRight') {
     keyboard.setMouseShiftState(e.target);
     return;
@@ -52,10 +103,7 @@ parent.addEventListener('mousedown', (e)=> {
     keyboard.addMouseShortcut('alt', code);
     return;
   }
-  if (code === 'CapsLock') {
-    keyboard.setCaps(code);
-    return;
-  }
+  inputSimilarCases(code);
   keyboard.clearShortcut();
   buttonAction(code, true);
   e.target.addEventListener('mouseup', ()=> {
@@ -66,11 +114,10 @@ parent.addEventListener('mousedown', (e)=> {
     e.target.mouseup = null;
     e.target.mouseleave = null;
   });
-});
+}
 
-document.addEventListener('keydown', (e)=> {
+function keyboardClick(e) {
   const code = e.code;
-  console.log(code);
   if (code === 'F12') {
     return;
   }
@@ -91,28 +138,24 @@ document.addEventListener('keydown', (e)=> {
     keyboard.setCaps(code);
     return;
   }
+  inputSimilarCases(code);
   buttonAction(e.code, true);
-});
+}
+
+parent.addEventListener('mousedown', mouseClick);
+document.addEventListener('keydown', keyboardClick);
 
 document.addEventListener('keyup', (e)=> {
   const code = e.code;
   if (code === 'ShiftLeft' || code === 'ShiftRight') {
-    // keyboard.getButton(code).node.classList.remove('clicked');
-    // keyboard.removeUppercaseState();
     keyboard.removeKeyboardShiftState(keyboard.getButton(code).node);
     return;
   }
-  if (code === 'ControlLeft' || code === 'ControlRight') {
+  if (code === 'ControlLeft' || code === 'ControlRight' || code === 'AltLeft' || code === 'AltRight') {
     keyboard.clearShortcut();
-    return;
-  }
-  e.preventDefault();
-  if (code === 'AltLeft' || code === 'AltRight') {
-    keyboard.clearShortcut();
-    return;
-  }
-  if (code === 'CapsLock') {
     return;
   }
   buttonAction(e.code, false);
 });
+
+textArea.addEventListener('focusout', () => textArea.focus());
