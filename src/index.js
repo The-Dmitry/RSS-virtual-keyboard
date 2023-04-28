@@ -50,7 +50,9 @@ function inputSimilarCases(code) {
   }
   if (code === 'ArrowLeft') {
     const step = textArea.selectionStart - 1;
-    [textArea.selectionStart, textArea.selectionEnd] = [step, step];
+    if (step >= 0) {
+      [textArea.selectionStart, textArea.selectionEnd] = [step, step];
+    }
     return;
   }
   if (code === 'ArrowRight') {
@@ -103,8 +105,11 @@ function mouseClick(e) {
     keyboard.addMouseShortcut('alt', code);
     return;
   }
-  inputSimilarCases(code);
   keyboard.clearShortcut();
+  inputSimilarCases(code);
+  if (code === 'CapsLock') {
+    return;
+  }
   buttonAction(code, true);
   e.target.addEventListener('mouseup', ()=> {
     buttonAction(code, false);
@@ -139,7 +144,7 @@ function keyboardClick(e) {
     return;
   }
   inputSimilarCases(code);
-  buttonAction(e.code, true);
+  buttonAction(code, true);
 }
 
 parent.addEventListener('mousedown', mouseClick);
@@ -153,6 +158,9 @@ document.addEventListener('keyup', (e)=> {
   }
   if (code === 'ControlLeft' || code === 'ControlRight' || code === 'AltLeft' || code === 'AltRight') {
     keyboard.clearShortcut();
+    return;
+  }
+  if (code === 'CapsLock') {
     return;
   }
   buttonAction(e.code, false);
