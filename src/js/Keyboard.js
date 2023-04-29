@@ -77,13 +77,16 @@ export class Keyboard {
   }
 
   getButtonValue(code) {
-    const button = this.buttonsList.get(code);
-    button.setActiveState();
-    return button.isSymbol ? button.nodeValue : null;
+    if (this.buttonsList.has(code)) {
+      const button = this.buttonsList.get(code);
+      button.setActiveState();
+      return button.isSymbol ? button.nodeValue : null;
+    }
+    return null;
   }
 
   getButton(code) {
-    return this.buttonsList.get(code);
+    return this.buttonsList.get(code) || null;
   }
 
   addMouseShortcut(name, code) {

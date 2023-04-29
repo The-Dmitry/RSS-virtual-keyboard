@@ -29,14 +29,15 @@ function insertChar(char) {
 }
 
 function buttonAction(code, isClick) {
-  if (code && code !== 'F12') {
-    if (isClick) {
-      const char = keyboard.getButtonValue(code);
-      if (char) {
-        insertChar(char);
-      }
-    } else {
-      keyboard.getButton(code).setInActiveState();
+  if (isClick) {
+    const char = keyboard.getButtonValue(code);
+    if (char) {
+      insertChar(char);
+    }
+  } else {
+    const char = keyboard.getButton(code);
+    if (char) {
+      char.setInActiveState();
     }
   }
 }
