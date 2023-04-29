@@ -127,6 +127,26 @@ body {
   width: 46.9%;
 }
 
+.backquote,
+.tab,
+.capslock,
+.shiftleft,
+.controlleft,
+.altleft,
+.altright,
+.controlright,
+.arrowleft,
+.arrowdown,
+.arrowright,
+.arrowup,
+.shiftright,
+.enter,
+.delete,
+.backspace {
+  background-color: #2e2e2e;
+}
+
+
 button:active,
 .clicked {
   background-color: rgb(112, 112, 255);
