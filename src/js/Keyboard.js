@@ -1,6 +1,6 @@
-import { Button } from './button';
+import Button from './Button.js';
 
-export class Keyboard {
+export default class Keyboard {
   buttonsList = new Map();
 
   constructor(language, buttons, parentNode) {
@@ -16,7 +16,7 @@ export class Keyboard {
   }
 
   buildButtonList() {
-    this.buttons.forEach(element => {
+    this.buttons.forEach((element) => {
       const node = new Button(element, this.language);
       this.buttonsList.set(element.code, node);
       this.parentNode.append(node.buildNode());
@@ -119,7 +119,7 @@ export class Keyboard {
   }
 
   clearShortcut() {
-    this.shortcut.forEach(el => el.setInActiveState());
+    this.shortcut.forEach((el) => el.setInActiveState());
     this.shortcut.clear();
   }
 }

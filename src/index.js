@@ -1,6 +1,6 @@
 import './scss/style.scss';
-import { buttonsData } from './js/buttonsData';
-import { Keyboard } from './js/keyboard';
+import buttonsData from './js/buttonsData.js';
+import Keyboard from './js/Keyboard.js';
 
 const wrapper = document.createElement('div');
 wrapper.className = 'wrapper';
@@ -120,12 +120,12 @@ function mouseClick(e) {
     return;
   }
   buttonAction(code, true);
-  e.target.addEventListener('mouseup', ()=> {
-    setTimeout(()=> {
+  e.target.addEventListener('mouseup', () => {
+    setTimeout(() => {
       buttonAction(code, false);
     }, 100);
   });
-  e.target.addEventListener('mouseleave', ()=> {
+  e.target.addEventListener('mouseleave', () => {
     buttonAction(code, false);
     e.target.mouseup = null;
     e.target.mouseleave = null;
@@ -133,7 +133,7 @@ function mouseClick(e) {
 }
 
 function keyboardClick(e) {
-  const code = e.code;
+  const { code } = e;
   if (code === 'F12') {
     return;
   }
@@ -161,8 +161,8 @@ function keyboardClick(e) {
 parent.addEventListener('mousedown', mouseClick);
 document.addEventListener('keydown', keyboardClick);
 
-document.addEventListener('keyup', (e)=> {
-  const code = e.code;
+document.addEventListener('keyup', (e) => {
+  const { code } = e;
   if (code === 'ShiftLeft' || code === 'ShiftRight') {
     keyboard.removeKeyboardShiftState(keyboard.getButton(code).node);
     return;

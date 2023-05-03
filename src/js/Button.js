@@ -1,6 +1,6 @@
-export class Button {
+export default class Button {
   constructor({
-    isSymbol, code, key, shift
+    isSymbol, code, key, shift,
   }, language) {
     this.isSymbol = isSymbol;
     this.nodeValue = null;

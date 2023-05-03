@@ -1,771 +1,760 @@
-export const buttonsData = [
+const buttonsData = [
   {
     isSymbol: true,
     code: 'Backquote',
     key: {
       eng: '`',
-      ru: 'ё'
+      ru: 'ё',
     },
     shift: {
       eng: '~',
-      ru: null
-    }
+      ru: null,
+    },
   },
   {
     isSymbol: true,
     code: 'Digit1',
     key: {
       eng: '1',
-      ru: '1'
+      ru: '1',
     },
     shift: {
       eng: '!',
-      ru: '!'
-    }
+      ru: '!',
+    },
   },
   {
     isSymbol: true,
     code: 'Digit2',
     key: {
       eng: '2',
-      ru: '2'
+      ru: '2',
     },
     shift: {
       eng: '@',
-      ru: '"'
-    }
+      ru: '"',
+    },
   },
   {
     isSymbol: true,
     code: 'Digit3',
     key: {
       eng: '3',
-      ru: '3'
+      ru: '3',
     },
     shift: {
       eng: '#',
-      ru: '№'
-    }
+      ru: '№',
+    },
   },
   {
     isSymbol: true,
     code: 'Digit4',
     key: {
       eng: '4',
-      ru: '4'
+      ru: '4',
     },
     shift: {
       eng: '$',
-      ru: ';'
-    }
+      ru: ';',
+    },
   },
   {
     isSymbol: true,
     code: 'Digit5',
     key: {
       eng: '5',
-      ru: '5'
+      ru: '5',
     },
     shift: {
       eng: '%',
-      ru: '%'
-    }
+      ru: '%',
+    },
   },
   {
     isSymbol: true,
     code: 'Digit6',
     key: {
       eng: '6',
-      ru: '6'
+      ru: '6',
     },
     shift: {
       eng: '^',
-      ru: ':'
-    }
+      ru: ':',
+    },
   },
   {
     isSymbol: true,
     code: 'Digit7',
     key: {
       eng: '7',
-      ru: '7'
+      ru: '7',
     },
     shift: {
       eng: '&',
-      ru: '?'
-    }
+      ru: '?',
+    },
   },
   {
     isSymbol: true,
     code: 'Digit8',
     key: {
       eng: '8',
-      ru: '8'
+      ru: '8',
     },
     shift: {
       eng: '*',
-      ru: '*'
-    }
+      ru: '*',
+    },
   },
   {
     isSymbol: true,
     code: 'Digit9',
     key: {
       eng: '9',
-      ru: '9'
+      ru: '9',
     },
     shift: {
       eng: '(',
-      ru: '('
-    }
+      ru: '(',
+    },
   },
   {
     isSymbol: true,
     code: 'Digit0',
     key: {
       eng: '0',
-      ru: '0'
+      ru: '0',
     },
     shift: {
       eng: ')',
-      ru: ')'
-    }
+      ru: ')',
+    },
   },
   {
     isSymbol: true,
     code: 'Minus',
     key: {
       eng: '-',
-      ru: '-'
+      ru: '-',
     },
     shift: {
       eng: '_',
-      ru: '_'
-    }
+      ru: '_',
+    },
   },
   {
     isSymbol: true,
     code: 'Equal',
     key: {
       eng: '=',
-      ru: '='
+      ru: '=',
     },
     shift: {
       eng: '+',
-      ru: '+'
-    }
+      ru: '+',
+    },
   },
   {
     isSymbol: false,
     code: 'Backspace',
     key: {
       eng: 'BACKSPACE',
-      ru: 'BACKSPACE'
+      ru: 'BACKSPACE',
     },
     shift: {
       eng: null,
-      ru: null
-    }
+      ru: null,
+    },
   },
   {
     isSymbol: false,
     code: 'Tab',
     key: {
       eng: 'TAB',
-      ru: 'TAB'
+      ru: 'TAB',
     },
     shift: {
       eng: null,
-      ru: null
-    }
+      ru: null,
+    },
   },
   {
     isSymbol: true,
     code: 'KeyQ',
     key: {
       eng: 'q',
-      ru: 'й'
+      ru: 'й',
     },
     shift: {
       eng: null,
-      ru: null
-    }
+      ru: null,
+    },
   },
   {
     isSymbol: true,
     code: 'KeyW',
     key: {
       eng: 'w',
-      ru: 'ц'
+      ru: 'ц',
     },
     shift: {
       eng: null,
-      ru: null
-    }
+      ru: null,
+    },
   },
   {
     isSymbol: true,
     code: 'KeyE',
     key: {
       eng: 'e',
-      ru: 'у'
+      ru: 'у',
     },
     shift: {
       eng: null,
-      ru: null
-    }
+      ru: null,
+    },
   },
   {
     isSymbol: true,
     code: 'KeyR',
     key: {
       eng: 'r',
-      ru: 'к'
+      ru: 'к',
     },
     shift: {
       eng: null,
-      ru: null
-    }
+      ru: null,
+    },
   },
   {
     isSymbol: true,
     code: 'KeyT',
     key: {
       eng: 't',
-      ru: 'е'
+      ru: 'е',
     },
     shift: {
       eng: null,
-      ru: null
-    }
+      ru: null,
+    },
   },
   {
     isSymbol: true,
     code: 'KeyY',
     key: {
       eng: 'y',
-      ru: 'н'
+      ru: 'н',
     },
     shift: {
       eng: null,
-      ru: null
-    }
+      ru: null,
+    },
   },
   {
     isSymbol: true,
     code: 'KeyU',
     key: {
       eng: 'u',
-      ru: 'г'
+      ru: 'г',
     },
     shift: {
       eng: null,
-      ru: null
-    }
+      ru: null,
+    },
   },
   {
     isSymbol: true,
     code: 'KeyI',
     key: {
       eng: 'i',
-      ru: 'ш'
+      ru: 'ш',
     },
     shift: {
       eng: null,
-      ru: null
-    }
+      ru: null,
+    },
   },
   {
     isSymbol: true,
     code: 'KeyO',
     key: {
       eng: 'o',
-      ru: 'щ'
+      ru: 'щ',
     },
     shift: {
       eng: null,
-      ru: null
-    }
+      ru: null,
+    },
   },
   {
     isSymbol: true,
     code: 'KeyP',
     key: {
       eng: 'p',
-      ru: 'з'
+      ru: 'з',
     },
     shift: {
       eng: null,
-      ru: null
-    }
+      ru: null,
+    },
   },
   {
     isSymbol: true,
     code: 'BracketLeft',
     key: {
       eng: '[',
-      ru: 'х'
+      ru: 'х',
     },
     shift: {
       eng: '{',
-      ru: null
-    }
+      ru: null,
+    },
   },
   {
     isSymbol: true,
     code: 'BracketRight',
     key: {
       eng: ']',
-      ru: 'ъ'
+      ru: 'ъ',
     },
     shift: {
       eng: '}',
-      ru: null
-    }
+      ru: null,
+    },
   },
   {
     isSymbol: true,
     code: 'Backslash',
     key: {
       eng: '\\',
-      ru: '\\'
+      ru: '\\',
     },
     shift: {
       eng: '|',
-      ru: '/'
-    }
+      ru: '/',
+    },
   },
   {
     isSymbol: false,
     code: 'Delete',
     key: {
       eng: 'DEL',
-      ru: 'DEL'
+      ru: 'DEL',
     },
     shift: {
       eng: null,
-      ru: null
-    }
+      ru: null,
+    },
   },
   {
     isSymbol: false,
     code: 'CapsLock',
     key: {
       eng: 'CAPS LOCK',
-      ru: 'CAPS LOCK'
+      ru: 'CAPS LOCK',
     },
     shift: {
       eng: null,
-      ru: null
-    }
+      ru: null,
+    },
   },
   {
     isSymbol: true,
     code: 'KeyA',
     key: {
       eng: 'a',
-      ru: 'ф'
+      ru: 'ф',
     },
     shift: {
       eng: null,
-      ru: null
-    }
+      ru: null,
+    },
   },
   {
     isSymbol: true,
     code: 'KeyS',
     key: {
       eng: 's',
-      ru: 'ы'
+      ru: 'ы',
     },
     shift: {
       eng: null,
-      ru: null
-    }
+      ru: null,
+    },
   },
   {
     isSymbol: true,
     code: 'KeyD',
     key: {
       eng: 'd',
-      ru: 'в'
+      ru: 'в',
     },
     shift: {
       eng: null,
-      ru: null
-    }
+      ru: null,
+    },
   },
   {
     isSymbol: true,
     code: 'KeyF',
     key: {
       eng: 'f',
-      ru: 'а'
+      ru: 'а',
     },
     shift: {
       eng: null,
-      ru: null
-    }
+      ru: null,
+    },
   },
   {
     isSymbol: true,
     code: 'KeyG',
     key: {
       eng: 'g',
-      ru: 'п'
+      ru: 'п',
     },
     shift: {
       eng: null,
-      ru: null
-    }
+      ru: null,
+    },
   },
   {
     isSymbol: true,
     code: 'KeyH',
     key: {
       eng: 'h',
-      ru: 'р'
+      ru: 'р',
     },
     shift: {
       eng: null,
-      ru: null
-    }
+      ru: null,
+    },
   },
   {
     isSymbol: true,
     code: 'KeyJ',
     key: {
       eng: 'j',
-      ru: 'о'
+      ru: 'о',
     },
     shift: {
       eng: null,
-      ru: null
-    }
+      ru: null,
+    },
   },
   {
     isSymbol: true,
     code: 'KeyK',
     key: {
       eng: 'k',
-      ru: 'л'
+      ru: 'л',
     },
     shift: {
       eng: null,
-      ru: null
-    }
+      ru: null,
+    },
   },
   {
     isSymbol: true,
     code: 'KeyL',
     key: {
       eng: 'l',
-      ru: 'д'
+      ru: 'д',
     },
     shift: {
       eng: null,
-      ru: null
-    }
+      ru: null,
+    },
   },
   {
     isSymbol: true,
     code: 'Semicolon',
     key: {
       eng: ';',
-      ru: 'ж'
+      ru: 'ж',
     },
     shift: {
       eng: ':',
-      ru: null
-    }
+      ru: null,
+    },
   },
   {
     isSymbol: true,
     code: 'Quote',
     key: {
       eng: '\'',
-      ru: 'э'
+      ru: 'э',
     },
     shift: {
       eng: '"',
-      ru: null
-    }
+      ru: null,
+    },
   },
   {
     isSymbol: false,
     code: 'Enter',
     key: {
       eng: 'ENTER',
-      ru: 'ENTER'
+      ru: 'ENTER',
     },
     shift: {
       eng: null,
-      ru: null
-    }
+      ru: null,
+    },
   },
   {
     isSymbol: false,
     code: 'ShiftLeft',
     key: {
       eng: 'SHIFT',
-      ru: 'SHIFT'
+      ru: 'SHIFT',
     },
     shift: {
       eng: null,
-      ru: null
-    }
+      ru: null,
+    },
   },
   {
     isSymbol: true,
     code: 'KeyZ',
     key: {
       eng: 'z',
-      ru: 'я'
+      ru: 'я',
     },
     shift: {
       eng: null,
-      ru: null
-    }
+      ru: null,
+    },
   },
   {
     isSymbol: true,
     code: 'KeyX',
     key: {
       eng: 'x',
-      ru: 'ч'
+      ru: 'ч',
     },
     shift: {
       eng: null,
-      ru: null
-    }
+      ru: null,
+    },
   },
   {
     isSymbol: true,
     code: 'KeyC',
     key: {
       eng: 'c',
-      ru: 'с'
+      ru: 'с',
     },
     shift: {
       eng: null,
-      ru: null
-    }
+      ru: null,
+    },
   },
   {
     isSymbol: true,
     code: 'KeyV',
     key: {
       eng: 'v',
-      ru: 'м'
+      ru: 'м',
     },
     shift: {
       eng: null,
-      ru: null
-    }
+      ru: null,
+    },
   },
   {
     isSymbol: true,
     code: 'KeyB',
     key: {
       eng: 'b',
-      ru: 'и'
+      ru: 'и',
     },
     shift: {
       eng: null,
-      ru: null
-    }
+      ru: null,
+    },
   },
   {
     isSymbol: true,
     code: 'KeyN',
     key: {
       eng: 'n',
-      ru: 'т'
+      ru: 'т',
     },
     shift: {
       eng: null,
-      ru: null
-    }
+      ru: null,
+    },
   },
   {
     isSymbol: true,
     code: 'KeyM',
     key: {
       eng: 'm',
-      ru: 'ь'
+      ru: 'ь',
     },
     shift: {
       eng: null,
-      ru: null
-    }
+      ru: null,
+    },
   },
   {
     isSymbol: true,
     code: 'Comma',
     key: {
       eng: ',',
-      ru: 'б'
+      ru: 'б',
     },
     shift: {
       eng: '<',
-      ru: null
-    }
+      ru: null,
+    },
   },
   {
     isSymbol: true,
     code: 'Period',
     key: {
       eng: '.',
-      ru: 'ю'
+      ru: 'ю',
     },
     shift: {
       eng: '>',
-      ru: null
-    }
+      ru: null,
+    },
   },
   {
     isSymbol: true,
     code: 'Slash',
     key: {
       eng: '/',
-      ru: '.'
+      ru: '.',
     },
     shift: {
       eng: '?',
-      ru: ','
-    }
+      ru: ',',
+    },
   },
   {
     isSymbol: false,
     code: 'ArrowUp',
     key: {
       eng: '&#9650',
-      ru: '&#9650'
+      ru: '&#9650',
     },
     shift: {
       eng: null,
-      ru: null
-    }
+      ru: null,
+    },
   },
   {
     isSymbol: false,
     code: 'ShiftRight',
     key: {
       eng: 'SHIFT',
-      ru: 'SHIFT'
+      ru: 'SHIFT',
     },
     shift: {
       eng: null,
-      ru: null
-    }
+      ru: null,
+    },
   },
   {
     isSymbol: false,
     code: 'ControlLeft',
     key: {
       eng: 'CTRL',
-      ru: 'CTRL'
+      ru: 'CTRL',
     },
     shift: {
       eng: null,
-      ru: null
-    }
+      ru: null,
+    },
   },
   {
     isSymbol: false,
     code: 'AltLeft',
     key: {
       eng: 'ALT',
-      ru: 'ALT'
+      ru: 'ALT',
     },
     shift: {
       eng: null,
-      ru: null
-    }
+      ru: null,
+    },
   },
   {
     isSymbol: true,
     code: 'Space',
     key: {
       eng: ' ',
-      ru: ' '
+      ru: ' ',
     },
     shift: {
       eng: null,
-      ru: null
-    }
+      ru: null,
+    },
   },
   {
     isSymbol: false,
     code: 'AltRight',
     key: {
       eng: 'ALT',
-      ru: 'ALT'
+      ru: 'ALT',
     },
     shift: {
       eng: null,
-      ru: null
-    }
+      ru: null,
+    },
   },
   {
     isSymbol: false,
     code: 'ControlRight',
     key: {
       eng: 'CTRL',
-      ru: 'CTRL'
+      ru: 'CTRL',
     },
     shift: {
       eng: null,
-      ru: null
-    }
+      ru: null,
+    },
   },
   {
     isSymbol: false,
     code: 'ArrowLeft',
     key: {
       eng: '&#9668',
-      ru: '&#9668'
+      ru: '&#9668',
     },
     shift: {
       eng: null,
-      ru: null
-    }
+      ru: null,
+    },
   },
   {
     isSymbol: false,
     code: 'ArrowDown',
     key: {
       eng: '&#9660',
-      ru: '&#9660'
+      ru: '&#9660',
     },
     shift: {
       eng: null,
-      ru: null
-    }
+      ru: null,
+    },
   },
   {
     isSymbol: false,
     code: 'ArrowRight',
     key: {
       eng: '&#9658',
-      ru: '&#9658'
+      ru: '&#9658',
     },
     shift: {
       eng: null,
-      ru: null
-    }
-  }
-  // {
-  //   type: 'meta',
-  //   code: 'Fn',
-  //   key: {
-  //     eng: 'FN',
-  //     ru: 'FN'
-  //   },
-  //   shift: {
-  //     eng: null,
-  //     ru: null
-  //   }
-  // }
-
+      ru: null,
+    },
+  },
 ];
+
+export default buttonsData;
